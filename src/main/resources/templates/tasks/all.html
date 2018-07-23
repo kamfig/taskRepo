@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <link th:href="@{/home/kamil/IdeaProjects/task/src/main/resources/templates/tasks/css/form1.css}" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+<nav>
+    <ul>
+        <li><a href="/">Moja zacna Strona Główna</a></li>
+        <li><a href="/all">about</a></li>
+        <li><a href="/isFinish">Formularz Kontaktowy</a></li>
+        <li><a href="/isNotFinish">about</a></li>
+    </ul>
+</nav>
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-xs-12">
+
+            <h1>Lista zadań</h1>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-xs-12">
+
+            <table class="table table-bordered table-hover table-custom">
+
+                <tr class="success">
+
+                    <th>Nazwa</th>
+
+                    <th>Description</th>
+
+                    <th>Finished</th>
+                    <th> Edit </th>
+
+                </tr>
+
+                <tr th:each="task : ${tasks}" th:classappend="${isFinished} ? favorite ">
+
+                    <td th:text="${task.name}"></td>
+
+                    <td th:text="${task.description}"></td>
+
+                    <td th:text="${task.isFinished()}"></td>
+
+                    <td><a th:href = "@{/tasks/{id}{id=${task.id}}}">Edit</a>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+</body>
+
+</html>
